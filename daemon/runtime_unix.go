@@ -186,7 +186,7 @@ var base32Disemvoweled = base32.NewEncoding("0123456789BCDFGHJKLMNPQRSTVWXYZ-")
 func wrapRuntime(dir, name, binary string, args []string) (string, error) {
 	var wrapper bytes.Buffer
 	sum := sha256.New()
-	_, _ = fmt.Fprintf(io.MultiWriter(&wrapper, sum), "#!/bin/sh\n%s %s $@\n", binary, strings.Join(args, " "))
+	_, _ = fmt.Fprintf(io.MultiWriter(&wrapper, sum), "#!/run/current-system/sw/bin/sh\n%s %s $@\n", binary, strings.Join(args, " "))
 	// Generate a consistent name for the wrapper script derived from the
 	// contents so that multiple wrapper scripts can coexist with the same
 	// base name. The existing scripts might still be referenced by running
